@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jdictionay.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("ready");
+
+            $("#test").on("click", function () {
+                console.log("click");
+
+                //var mydata = { name: "andres", email: "cata@mungos.co", password: "1234", pets: [{ name: "coky" }] };
+                var mydata = { email: "juan@gmail.com", password: "1234"};
+
+                //Check for online updates
+                $.ajax({
+                    url: "/profile/get",
+                    dataType: "json",
+                    type: "POST",
+                    data: $.toDictionary(mydata),
+                    success: function(data){
+
+                    },
+                    error: function(a, b, c){                      
+
+                        console.log("error getting updates " + a + b + c);
+                    }
+                })
+                    .then( function ( response ) {
+
+                        console.log(response);
+
+                        if (response.errorMessage) {
+                            console.log(response.errorMessage);
+                        } else {
+                            console.log(response.mongoid);
+                            console.log(response);
+                        }                       
+
+                    });
+
+           
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <input id="test" type="button" value="Try" />
+    </div>
+</body>
+</html>

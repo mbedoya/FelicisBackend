@@ -46,13 +46,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\BreedBO.cs" />
+    <Compile Include="Business\ForbiddenFoodBO.cs" />
+    <Compile Include="Business\ProfileBO.cs" />
     <Compile Include="Business\RecipeBO.cs" />
     <Compile Include="Business\UpdateBO.cs" />
     <Compile Include="Models\DAL\BaseDAL.cs" />
     <Compile Include="Models\BaseDataModel.cs" />
     <Compile Include="Models\BreedDataModel.cs" />
+    <Compile Include="Models\DAL\ForbiddenFoodDAL.cs" />
+    <Compile Include="Models\DAL\ProfileDAL.cs" />
     <Compile Include="Models\DAL\RecipeDAL.cs" />
     <Compile Include="Models\DAL\UpdateDAL.cs" />
+    <Compile Include="Models\Exceptions\AccountExistsException.cs" />
+    <Compile Include="Models\ForbiddenFoodDataModel.cs" />
+    <Compile Include="Models\PetDataModel.cs" />
+    <Compile Include="Models\ProfileDataModel.cs" />
     <Compile Include="Models\RecipeDataModel.cs" />
     <Compile Include="Models\UpdateDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,9 @@ namespace BusinessManager.Models.DAL
         {
             breeds,
             updates,
-            recipes
+            recipes,
+            profiles,
+            forbiddenfood
         }
 
         public static IEnumerable<T> GetAll<T>(Collections collectionName)
@@ -28,6 +30,16 @@ namespace BusinessManager.Models.DAL
             MongoCursor<T> cursor = collection.FindAll();
             IEnumerable<T> list = cursor.ToList<T>();
             return list;
+        }
+
+        public static T Create<T>(T entity, Collections collectionName)
+        {
+            var client = new MongoClient(connstring);
+            var server = client.GetServer();
+            var db = server.GetDatabase(db_name);
+            MongoCollection<T> collection = db.GetCollection<T>(collectionName.ToString());           
+            WriteConcernResult result = collection.Insert(entity);
+            return entity;
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +10,12 @@ namespace BusinessManager.Models
 {
     public class BaseDataModel
     {
-        public Object id { get; set; }
+
+        [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonIgnoreIfDefault] 
+        public string mongoid { get; set; }
+
         public String name { get; set; }
     }
 }

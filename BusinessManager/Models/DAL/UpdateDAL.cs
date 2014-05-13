@@ -23,7 +23,7 @@ namespace BusinessManager.Models.DAL
 
             var query =
                 collection.AsQueryable<UpdateDataModel>()
-                .OrderBy(c => c.id)
+                .OrderBy(c => c.date)
                 .Skip(updatesApplied);
 
             IEnumerable<UpdateDataModel> list = query.ToList<UpdateDataModel>();
